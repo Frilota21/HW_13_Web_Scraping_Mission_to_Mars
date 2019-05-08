@@ -1,0 +1,82 @@
+<!-- The base code for this html was stolen, and then heavily adapted, from the in class assignment - 12.3.10, Stu_Scrape_Weather -->
+<!-- Allot of the code is also a product of dicussions and coaching from Jonathan Randolph-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Data Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+        <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+  </div>
+
+  <div class='container'>
+      <div class = 'row'>
+          <h1>Latest Mars News</h1>
+      </div>
+
+      <div class = 'row'>
+            <div class = 'thumbnail'>
+                    <h3 class = 'text'>{{mars.news_title}}</h3>
+                    <hr>
+                        <p>{{mars.news_p}}</p>
+            </div>
+
+  </div>
+
+  <div class = 'container text - left'>
+      <div class = 'row text'>
+          <div class = 'col'>
+              <h1 class = 'text'> Featured Mars Image</h1>
+          </div>
+          <hr>
+            <img src = '{{mars.featured_image_url}}' alt = 'featured_image_url'>
+      </div>
+      <hr>
+      <br>
+      <div class = 'col-lg mb-6 border-secondary'>
+          <h4>Current Weather On Mars</h4>
+          <hr>
+          <p>{{mars.mars_weather}}</p>
+      </div>
+      <div class = 'col'>
+          <h4>Mars Facts</h4>
+          <hr>
+          <table class = 'table-sm table-striped'>
+            {{mars.table}}
+            </table>
+      </div>
+  </div>
+
+  <div class = 'container'>
+        <div class = 'row'>
+    <div class = 'col'>
+        <h4 class = 'text-center'>Mars Hemispheres</h4>
+    </div>
+    {% for item in mars.hemisphere_image_urls %}
+    <div class = 'col'>
+        <h6>{{item.title}}</h6>
+        <a href = {{item.img_url}}>
+            <img class = 'image responsive' src = {{item.img_url}} alt = {{item.title}}>
+        </a>
+    </div>
+    {% endfor %}
+        </div>
+        <hr>
+  </div>
+
+
+
+</body>
+
+</html>
